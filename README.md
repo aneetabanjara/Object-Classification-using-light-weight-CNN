@@ -1,13 +1,12 @@
-
 # CIFAR-10 Image Classification Web Application
 
-This project classifies images from the CIFAR-10 dataset using Convolutional Neural Networks (CNNs) and provides a **web-based frontend** for users to interact with the model. The goal is to build a web application where users can upload images, and the model will predict the class (airplane, automobile, bird, etc.).
+This project classifies images from the CIFAR-10 dataset using Convolutional Neural Networks (CNNs) and provides a **web-based frontend** built with **Flask**. Users can upload images to the web interface, and the model will predict the class of the image (e.g., airplane, automobile, bird, etc.).
 
 ## Key Features
 - **Backend**: A CNN model built with TensorFlow/Keras for classifying CIFAR-10 images.
-- **Frontend**: A simple web interface built using HTML, CSS, and JavaScript to interact with the model.
-- **Data Augmentation**: The model uses data augmentation to improve generalization.
-- **Visualization**: Visualize the model's training accuracy and loss over epochs.
+- **Frontend**: A web interface developed using **Flask** to interact with the model. 
+- **Data Augmentation**: The model utilizes data augmentation techniques to improve generalization.
+- **Visualization**: Visualize training accuracy and loss over epochs.
 
 ## Dataset
 The CIFAR-10 dataset contains 60,000 32x32 color images in 10 classes: airplane, automobile, bird, cat, deer, dog, frog, horse, ship, and truck. You can download the dataset from [CIFAR-10 Website](https://www.cs.toronto.edu/~kriz/cifar.html).
@@ -18,10 +17,10 @@ The CIFAR-10 dataset contains 60,000 32x32 color images in 10 classes: airplane,
 - Python 3.6+
 - TensorFlow 2.x
 - Keras
-- Flask (for backend API)
+- Flask (for frontend and backend integration)
 - Matplotlib
 - Numpy
-- HTML, CSS, and JavaScript for the frontend
+- HTML, CSS for styling (used in Flask templates)
 
 ### Steps:
 1. Clone the repository:
@@ -35,24 +34,25 @@ The CIFAR-10 dataset contains 60,000 32x32 color images in 10 classes: airplane,
    pip install -r requirements.txt
    ```
 
-3. Run the backend server:
+3. Run the backend Flask server:
    ```bash
    python app.py
    ```
+   The server will start, and you can access the web interface at `http://127.0.0.1:5000/`.
 
-4. Open the `index.html` file in your browser to access the web interface.
+4. Open your browser and navigate to `http://127.0.0.1:5000/` to interact with the web application.
 
 ## Usage
 
-1. **Frontend**: Open the web application in your browser. Upload an image, and the model will predict its class.
+1. **Frontend**: On the web interface, you can upload an image for classification. The Flask app will send the image to the backend, where the CNN model processes the image and returns the predicted class.
 
-2. **Training**: To train the CNN model, run the following:
+2. **Training**: To train the CNN model, use the following command:
    ```bash
    python train.py
    ```
-   This will save the trained model as `model.h5`.
+   The model will be saved as `model.h5`.
 
-3. **Evaluation**: To evaluate the model on the test set:
+3. **Evaluation**: After training the model, you can evaluate its performance on the CIFAR-10 test set:
    ```python
    from tensorflow.keras.models import load_model
    model = load_model('model.h5')
@@ -60,7 +60,7 @@ The CIFAR-10 dataset contains 60,000 32x32 color images in 10 classes: airplane,
    print(f"Test accuracy: {test_acc}")
    ```
 
-4. **Prediction**: The frontend allows users to upload an image and receive predictions from the trained model.
+4. **Prediction**: The frontend allows users to upload an image, and the backend model will predict its class.
 
 ## Results
 The model achieves an accuracy of **X%** on the CIFAR-10 test set.
@@ -71,8 +71,8 @@ This project is licensed under the MIT License.
 ## Acknowledgments
 - **CIFAR-10 Dataset**: Provided by CIFAR.
 - **TensorFlow/Keras**: Used for model development.
-- **Flask**: Used for creating the backend API to serve predictions.
+- **Flask**: Used to build the web interface and integrate with the backend model.
 
 ---
 
-This version includes details about the **web application** aspect, mentioning how the frontend is integrated with the backend model to allow users to interact with it via a web interface. Let me know if you need further changes!
+This version reflects that the frontend is built using **Flask** and also integrates Flask with the backend model. Let me know if any more adjustments are needed!
